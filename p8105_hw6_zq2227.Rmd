@@ -1,6 +1,6 @@
 ---
 title: "p8105_hw6_zq2227"
-author: "Zixuan Qiu"
+author: "Zixuan Qiu zq2227"
 date: "2023-12-01"
 output: github_document
 ---
@@ -210,7 +210,7 @@ birthweight=birthweight|>
   add_predictions(fit1, var = "fitted_values")|>
   add_residuals(fit1, var = "residuals")
 ```
-
+**Model Explanation： Initial Model: Influence of Mother's Weight Gain and Race In first model, we hypothesized that a baby's birth weight (bwt) could be influenced by two main factors: the mother's weight gain during pregnancy (wtgain) and the mother's race (mrace).**
 ```{r}
 ggplot(birthweight, aes(x = fitted_values, y = residuals)) +
   geom_point() +
@@ -219,8 +219,7 @@ ggplot(birthweight, aes(x = fitted_values, y = residuals)) +
        x = "Fitted Values",
        y = "Residuals")
 ```
-**comment:**
-
+**The residual vs fitted valued plot shows the most of the residual points appear to randomly surround the red dashed line y=0, and there are some outlines far from the dashed line. The  residual distribution indicate there are no clear trend or pattern between residual and pitted valued, it means that the fit of the model is reasonable overall, but may require Further improvements for the Homoscedasticity  of the residual.**
 
 ### One using length at birth and gestational age as predictors (main effects only)
 ```{r}
@@ -265,6 +264,6 @@ cv_df |>
   mutate(model = fct_inorder(model)) |> 
   ggplot(aes(x = model, y = rmse)) + geom_violin()+theme_minimal() 
 ```
-
+**These RMSE plot hows that Model 3, despite being the most complex, actually did the best job at predicting the baby's birth weight. The lower the RMSE, the closer our model's predictions are to the actual values, which is what we want in a good model. Model 3 has the lowest RMSE, followed by Model 2, and then Model 1.**
 
  
